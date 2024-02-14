@@ -1,6 +1,6 @@
 export default function toDo(listObj) {
-  function addToDo(list = "Tasks") {
-    listObj.getLists()[list].push({ type: "test" });
+  function addToDo(toDoObject, list = "Tasks") {
+    listObj.getLists()[list].push(toDoObject);
   }
 
   return { addToDo };
