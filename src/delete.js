@@ -1,6 +1,6 @@
 export default function deleteItems(listObj) {
-  function deleteToDo(item, list = "Tasks") {
-    listObj.getLists()[list].splice(item, 1);
+  function deleteToDo(id, list = "Tasks") {
+    delete listObj.getLists()[list][id];
   }
 
   function deleteList(list) {

@@ -1,16 +1,16 @@
 export default function completeToDo(listObj) {
-  const completedList = [];
+  const completedList = {};
 
-  function checkCompleted(item, list = "Tasks") {
-    completedList.push(listObj.getLists()[list][item]);
-    listObj.getLists()[list].splice(item, 1);
+  function checkCompleted(id, list = "Tasks") {
+    completedList[id] = listObj.getLists()[list][id];
+    delete listObj.getLists()[list][id];
   }
 
   const getCompletedList = () => completedList;
 
-  function undoComplete(item, list = "Tasks") {
-    listObj.getLists()[list].push(completedList[item]);
-    completedList.splice(item, 1);
+  function undoComplete(id, list = "Tasks") {
+    listObj.getLists()[list][id] = completedList[id];
+    delete completedList[id];
   }
   return { checkCompleted, getCompletedList, undoComplete };
 }

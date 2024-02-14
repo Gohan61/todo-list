@@ -1,6 +1,6 @@
 export default function list() {
   const lists = {
-    Tasks: [],
+    Tasks: {},
   };
 
   const getLists = () => lists;
@@ -9,7 +9,7 @@ export default function list() {
     if (lists.hasOwnProperty(name)) {
       console.log("List name already exists");
     } else {
-      lists[name] = [];
+      lists[name] = {};
     }
   }
 

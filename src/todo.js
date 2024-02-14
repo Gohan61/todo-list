@@ -5,11 +5,15 @@ export default function toDo(listObj) {
     description = "",
     dueDate = "",
     priority = "",
-    id = 2
+    id = Date.now()
   ) {
-    listObj
-      .getLists()
-      [list].push({ title, description, dueDate, priority, id });
+    // Object.assign({ id });
+    listObj.getLists()[list][id] = {
+      title,
+      description,
+      dueDate,
+      priority,
+    };
   }
 
   return { addToDo };
