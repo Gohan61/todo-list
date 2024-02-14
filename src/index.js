@@ -2,11 +2,13 @@ import list from "./list";
 import toDo from "./todo";
 import completeToDo from "./completeToDo";
 import priority from "./priority";
+import deleteItems from "./delete";
 
 const listObj = list();
 const toDoObj = toDo(listObj);
 const completed = completeToDo(listObj);
 const priorityObj = priority(listObj);
+const deleteObj = deleteItems(listObj);
 
 listObj.addLists("second");
 
@@ -26,6 +28,9 @@ listObj.getLists()["Tasks"].forEach((el, i) => {
   }
 });
 // priorityObj.changePriority(1);
+
+deleteObj.deleteToDo(0);
+deleteObj.deleteList("second");
 
 console.log(completed.getCompletedList());
 console.log(listObj.getLists());
