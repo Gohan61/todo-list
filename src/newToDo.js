@@ -1,4 +1,10 @@
-export default function newToDoItem(obj, listObj, deleteObj) {
+export default function newToDoItem(
+  obj,
+  listObj,
+  deleteObj,
+  completed,
+  priorityObj
+) {
   const newToDo = document.querySelector(".newToDo");
   const newToDoForm = document.querySelector(".newToDoForm");
 
@@ -26,6 +32,7 @@ export default function newToDoItem(obj, listObj, deleteObj) {
     const deleteButton = document.createElement("button");
     const description = document.createElement("div");
     const notes = document.createElement("div");
+    const changePriority = document.createElement("button");
 
     title.textContent = listObj.getLists()[list][id]["title"];
     date.textContent = listObj.getLists()[list][id]["dueDate"];
@@ -33,14 +40,27 @@ export default function newToDoItem(obj, listObj, deleteObj) {
     expand.textContent = "Expand";
     deleteButton.textContent = "Delete";
     description.textContent = listObj.getLists()[list][id]["description"];
+    description.style.display = "none";
     if (listObj.getLists()[list][id]["priority"] === true) {
       toDoDiv.style.backgroundColor = "red";
     }
     notes.textContent = listObj.getLists()[list][id]["notes"];
+    notes.style.display = "none";
+    changePriority.textContent = "Priority";
+    changePriority.style.display = "none";
 
     expand.addEventListener("click", () => {
-      toDoDiv.insertBefore(description, expand);
-      toDoDiv.insertBefore(notes, expand);
+      expand.textContent = "Collapse";
+      if (description.style.display === "none") {
+        description.style.display = "";
+        notes.style.display = "";
+        changePriority.style.display = "";
+      } else {
+        description.style.display = "none";
+        notes.style.display = "none";
+        changePriority.style.display = "none";
+        expand.textContent = "Expand";
+      }
     });
 
     deleteButton.addEventListener("click", () => {
@@ -48,8 +68,25 @@ export default function newToDoItem(obj, listObj, deleteObj) {
       toDoDiv.remove();
     });
 
+    checkToDo.addEventListener("click", () => {
+      completed.checkCompleted(id);
+      toDoDiv.remove();
+    });
+
+    changePriority.addEventListener("click", () => {
+      priorityObj.changePriority(id);
+      if (listObj.getLists()[list][id]["priority"] === true) {
+        toDoDiv.style.backgroundColor = "red";
+      } else {
+        toDoDiv.style.backgroundColor = "";
+      }
+    });
+
     listContainer.append(toDoDiv);
     toDoDiv.append(checkToDo, title, date, expand, deleteButton);
+    toDoDiv.insertBefore(description, expand);
+    toDoDiv.insertBefore(notes, expand);
+    toDoDiv.insertBefore(changePriority, expand);
   }
 
   newToDo.addEventListener("submit", (e) => {

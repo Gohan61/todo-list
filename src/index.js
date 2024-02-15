@@ -11,7 +11,13 @@ const toDoObj = toDo(listObj);
 const completed = completeToDo(listObj);
 const priorityObj = priority(listObj);
 const deleteObj = deleteItems(listObj);
-const newToDoObj = newToDoItem(toDoObj.addToDo, listObj, deleteObj);
+const newToDoObj = newToDoItem(
+  toDoObj.addToDo,
+  listObj,
+  deleteObj,
+  completed,
+  priorityObj
+);
 // const currentListObj = currentList(listObj, newToDoObj.id);
 
 // listObj.addLists("second");
