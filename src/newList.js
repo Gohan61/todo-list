@@ -1,5 +1,6 @@
 export default function newList(listObj) {
   const newListForm = document.querySelector(".newListDiv");
+  const listSelection = document.querySelector("#list");
 
   newListForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -7,6 +8,11 @@ export default function newList(listObj) {
     const newListInput = document.querySelector("#newList");
 
     listObj.addLists(newListInput.value);
+
+    const newListItem = document.createElement("option");
+    newListItem.setAttribute("value", newListInput.value);
+    newListItem.textContent = newListInput.value;
+    listSelection.append(newListItem);
 
     newListForm.reset();
   });
