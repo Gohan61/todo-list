@@ -82,11 +82,13 @@ export default function newToDoItem(
       }
     });
 
-    listContainer.append(toDoDiv);
-    toDoDiv.append(checkToDo, title, date, expand, deleteButton);
-    toDoDiv.insertBefore(description, expand);
-    toDoDiv.insertBefore(notes, expand);
-    toDoDiv.insertBefore(changePriority, expand);
+    if (list === "Tasks") {
+      listContainer.append(toDoDiv);
+      toDoDiv.append(checkToDo, title, date, expand, deleteButton);
+      toDoDiv.insertBefore(description, expand);
+      toDoDiv.insertBefore(notes, expand);
+      toDoDiv.insertBefore(changePriority, expand);
+    }
   }
 
   newToDo.addEventListener("submit", (e) => {
@@ -101,7 +103,7 @@ export default function newToDoItem(
       notes.value
     );
 
-    currentListing(currentToDo.id);
+    currentListing(currentToDo.id, currentList.value);
 
     newToDo.reset();
   });
