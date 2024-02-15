@@ -4,7 +4,7 @@ import completeToDo from "./completeToDo";
 import priority from "./priority";
 import deleteItems from "./delete";
 import newToDoItem from "./newToDo";
-// import currentList from "./currentList";
+import newList from "./newList";
 
 const listObj = list();
 const toDoObj = toDo(listObj);
@@ -18,6 +18,7 @@ const newToDoObj = newToDoItem(
   completed,
   priorityObj
 );
+const newListObj = newList(listObj);
 // const currentListObj = currentList(listObj, newToDoObj.id);
 
 // listObj.addLists("second");
