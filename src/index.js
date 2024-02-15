@@ -4,13 +4,15 @@ import completeToDo from "./completeToDo";
 import priority from "./priority";
 import deleteItems from "./delete";
 import newToDoItem from "./newToDo";
+// import currentList from "./currentList";
 
 const listObj = list();
 const toDoObj = toDo(listObj);
 const completed = completeToDo(listObj);
 const priorityObj = priority(listObj);
 const deleteObj = deleteItems(listObj);
-const newToDoObj = newToDoItem(toDoObj.addToDo);
+const newToDoObj = newToDoItem(toDoObj.addToDo, listObj, deleteObj);
+// const currentListObj = currentList(listObj, newToDoObj.id);
 
 // listObj.addLists("second");
 
