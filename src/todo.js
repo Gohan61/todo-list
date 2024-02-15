@@ -5,6 +5,7 @@ export default function toDo(listObj) {
     description = "",
     dueDate = "",
     priority = "",
+    notes = "",
     id = Date.now()
   ) {
     listObj.getLists()[list][id] = {
@@ -12,6 +13,7 @@ export default function toDo(listObj) {
       description,
       dueDate,
       priority,
+      notes,
     };
   }
 
