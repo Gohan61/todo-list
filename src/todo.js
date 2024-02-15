@@ -7,7 +7,6 @@ export default function toDo(listObj) {
     priority = "",
     id = Date.now()
   ) {
-    // Object.assign({ id });
     listObj.getLists()[list][id] = {
       title,
       description,
@@ -16,5 +15,9 @@ export default function toDo(listObj) {
     };
   }
 
-  return { addToDo };
+  function editToDo(id, field, change, list = "Tasks") {
+    listObj.getLists()[list][id][field] = change;
+  }
+
+  return { addToDo, editToDo };
 }

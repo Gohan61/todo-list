@@ -26,7 +26,9 @@ completed.undoComplete(0, "second");
 priorityObj.changePriority(0, "second");
 
 // deleteObj.deleteToDo(0);
-deleteObj.deleteList("second");
+// deleteObj.deleteList("second");
+
+toDoObj.editToDo(0, "title", "Changed second", "second");
 
 console.log(completed.getCompletedList());
 console.log(listObj.getLists());
