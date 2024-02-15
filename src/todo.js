@@ -15,6 +15,7 @@ export default function toDo(listObj) {
       priority,
       notes,
     };
+    return { id };
   }
 
   function editToDo(id, field, change, list = "Tasks") {
