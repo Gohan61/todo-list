@@ -13,14 +13,14 @@ const toDoObj = toDo(listObj);
 const completed = completeToDo(listObj);
 const priorityObj = priority(listObj);
 const deleteObj = deleteItems(listObj);
-const newToDoObj = newToDoItem(
-  toDoObj.addToDo,
+const updateDisplayToDoObj = updateDisplayToDo(
   listObj,
   deleteObj,
   completed,
   priorityObj
 );
-const updateDisplayToDoObj = updateDisplayToDo(listObj);
+const newToDoObj = newToDoItem(toDoObj.addToDo, listObj, updateDisplayToDoObj);
+
 const navBarListObj = navLists(listObj, updateDisplayToDoObj);
 navBarListObj.updateNavLists();
 navBarListObj.displayListToDo();
