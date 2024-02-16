@@ -57,7 +57,7 @@ export default function updateDisplayToDo(
       });
 
       checkToDo.addEventListener("click", () => {
-        completed.checkCompleted(key);
+        completed.checkCompleted(key, list);
         toDoDiv.remove();
       });
 
