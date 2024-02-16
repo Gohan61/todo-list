@@ -6,6 +6,7 @@ import deleteItems from "./delete";
 import newToDoItem from "./newToDo";
 import newList from "./newList";
 import navLists from "./navLists";
+import updateDisplayToDo from "./updateDisplayToDo";
 
 const listObj = list();
 const toDoObj = toDo(listObj);
@@ -19,9 +20,11 @@ const newToDoObj = newToDoItem(
   completed,
   priorityObj
 );
-const navBarListObj = navLists(listObj);
+const updateDisplayToDoObj = updateDisplayToDo(listObj);
+const navBarListObj = navLists(listObj, updateDisplayToDoObj);
 navBarListObj.updateNavLists();
-const newListObj = newList(listObj, navBarListObj);
+navBarListObj.displayListToDo();
+const newListObj = newList(listObj, navBarListObj, navBarListObj);
 
 // const currentListObj = currentList(listObj, newToDoObj.id);
 

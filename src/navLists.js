@@ -1,5 +1,6 @@
-export default function navLists(listObj) {
+export default function navLists(listObj, updateDisplayToDo) {
   const navBarLists = document.querySelector(".navLists");
+  const listToDo = document.querySelector(".listToDo");
 
   function updateNavLists() {
     while (navBarLists.firstChild) {
@@ -7,12 +8,23 @@ export default function navLists(listObj) {
     }
     for (const [key, value] of Object.entries(listObj.getLists())) {
       const button = document.createElement("button");
-      button.setAttribute("class", key);
+      button.setAttribute("list", key);
+      button.setAttribute("class", "navListButton");
       button.textContent = key;
 
       navBarLists.append(button);
     }
   }
 
-  return { updateNavLists };
+  function displayListToDo() {
+    let navBarListsChildren = document.querySelectorAll(".navListButton");
+
+    navBarListsChildren.forEach((item) => {
+      item.addEventListener("click", () => {
+        updateDisplayToDo.updateDisp(item.getAttribute("list"));
+      });
+    });
+  }
+
+  return { updateNavLists, displayListToDo };
 }
