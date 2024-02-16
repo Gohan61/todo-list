@@ -12,7 +12,16 @@ export default function navLists(listObj, updateDisplayToDo) {
       button.setAttribute("class", "navListButton");
       button.textContent = key;
 
-      navBarLists.append(button);
+      const deleteList = document.createElement("button");
+      deleteList.setAttribute("list", key);
+      deleteList.setAttribute("class", "deleteList");
+      deleteList.textContent = "Delete";
+
+      if (key === "Tasks") {
+        navBarLists.append(button);
+      } else {
+        navBarLists.append(button, deleteList);
+      }
     }
   }
 
