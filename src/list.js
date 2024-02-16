@@ -4,12 +4,16 @@ export default function list() {
   };
 
   const getLists = () => lists;
+  const error = document.querySelector(".errorList");
 
   function addLists(name) {
     if (lists.hasOwnProperty(name)) {
-      console.log("List name already exists");
+      error.textContent = "List name already exists";
+    } else if (name === "Tasks") {
+      error.textContent = "List name already exists";
     } else {
       lists[name] = {};
+      error.textContent = "";
     }
   }
 
