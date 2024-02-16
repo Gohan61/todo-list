@@ -1,4 +1,4 @@
-export default function newList(listObj) {
+export default function newList(listObj, navLists) {
   const newListForm = document.querySelector(".newListDiv");
   const listSelection = document.querySelector("#list");
 
@@ -13,6 +13,8 @@ export default function newList(listObj) {
     newListItem.setAttribute("value", newListInput.value);
     newListItem.textContent = newListInput.value;
     listSelection.append(newListItem);
+
+    navLists.updateNavLists();
 
     newListForm.reset();
   });
