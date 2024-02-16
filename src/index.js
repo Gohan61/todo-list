@@ -8,6 +8,7 @@ import newList from "./newList";
 import navLists from "./navLists";
 import updateDisplayToDo from "./updateDisplayToDo";
 import deleteLists from "./deleteLists";
+import showComplete from "./showComplete";
 
 const listObj = list();
 const toDoObj = toDo(listObj);
@@ -20,6 +21,7 @@ const updateDisplayToDoObj = updateDisplayToDo(
   completed,
   priorityObj
 );
+const showCompletedObj = showComplete(completed);
 const newToDoObj = newToDoItem(toDoObj.addToDo, listObj, updateDisplayToDoObj);
 
 const navBarListObj = navLists(listObj, updateDisplayToDoObj);
