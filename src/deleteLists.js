@@ -6,6 +6,9 @@ export default function deleteLists(listObj, navBarListObj) {
       item.addEventListener("click", () => {
         delete listObj.getLists()[item.getAttribute("list")];
         navBarListObj.updateNavLists();
+        const listValue = item.getAttribute("list");
+        const listItem = document.querySelector(`[value=${listValue}]`);
+        listItem.remove();
       });
     });
   }
