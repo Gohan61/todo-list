@@ -4,6 +4,13 @@ export default function showComplete(completedList, currentList) {
 
   showCompleted.addEventListener("click", () => {
     showFinished();
+    if (showCompleted.textContent === "Show finished to-do's") {
+      showCompleted.textContent = "Hide finished to-do's";
+      completedListDiv.style.display = "";
+    } else {
+      showCompleted.textContent = "Show finished to-do's";
+      completedListDiv.style.display = "none";
+    }
   });
 
   function showFinished() {
