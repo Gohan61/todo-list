@@ -1,6 +1,7 @@
 export default function navLists(listObj, updateDisplayToDo) {
   const navBarLists = document.querySelector(".navLists");
   const listToDo = document.querySelector(".listToDo");
+  const currentListOnPage = ["Tasks"];
 
   function updateNavLists() {
     while (navBarLists.firstChild) {
@@ -31,9 +32,12 @@ export default function navLists(listObj, updateDisplayToDo) {
     navBarListsChildren.forEach((item) => {
       item.addEventListener("click", () => {
         updateDisplayToDo.updateDisp(item.getAttribute("list"));
+        currentListOnPage.splice(0, 1, item.getAttribute("list"));
+        console.log(currentListOnPage);
       });
     });
   }
+  const getCurrentList = () => currentListOnPage[0];
 
-  return { updateNavLists, displayListToDo };
+  return { updateNavLists, displayListToDo, getCurrentList };
 }

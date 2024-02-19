@@ -1,4 +1,4 @@
-export default function showComplete(completedList) {
+export default function showComplete(completedList, currentList) {
   const showCompleted = document.querySelector(".showCompleted");
   const completedListDiv = document.querySelector(".completedList");
 
@@ -6,13 +6,13 @@ export default function showComplete(completedList) {
     showFinished();
   });
 
-  function showFinished(list = "Tasks") {
+  function showFinished() {
     while (completedListDiv.firstChild) {
       completedListDiv.removeChild(completedListDiv.lastChild);
     }
 
     for (const [key, value] of Object.entries(
-      completedList.getCompletedList()[list]
+      completedList.getCompletedList()[currentList.getCurrentList()]
     )) {
       const toDoDiv = document.createElement("div");
       const uncheckToDo = document.createElement("button");
@@ -25,7 +25,7 @@ export default function showComplete(completedList) {
       console.log(key, value);
 
       uncheckToDo.addEventListener("click", () => {
-        completedList.undoComplete(key, list);
+        completedList.undoComplete(key, currentList.getCurrentList());
         toDoDiv.remove();
       });
 

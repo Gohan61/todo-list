@@ -21,10 +21,10 @@ const updateDisplayToDoObj = updateDisplayToDo(
   completed,
   priorityObj
 );
-const showCompletedObj = showComplete(completed);
 const newToDoObj = newToDoItem(toDoObj.addToDo, listObj, updateDisplayToDoObj);
 
 const navBarListObj = navLists(listObj, updateDisplayToDoObj);
+const showCompletedObj = showComplete(completed, navBarListObj);
 navBarListObj.updateNavLists();
 navBarListObj.displayListToDo();
 const deleteListObj = deleteLists(listObj, navBarListObj);
