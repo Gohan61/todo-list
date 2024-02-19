@@ -38,6 +38,7 @@ export default function navLists(listObj, updateDisplayToDo) {
     });
   }
   const getCurrentList = () => currentListOnPage[0];
+  const setCurrentList = (setList) => currentListOnPage.splice(0, 1, setList);
 
-  return { updateNavLists, displayListToDo, getCurrentList };
+  return { updateNavLists, displayListToDo, getCurrentList, setCurrentList };
 }

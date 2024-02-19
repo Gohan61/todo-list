@@ -1,4 +1,9 @@
-export default function newToDoItem(obj, listObj, updateDisplayToDoObj) {
+export default function newToDoItem(
+  obj,
+  listObj,
+  updateDisplayToDoObj,
+  navBarListObj
+) {
   const newToDo = document.querySelector(".newToDo");
   const newToDoForm = document.querySelector(".newToDoForm");
 
@@ -28,6 +33,8 @@ export default function newToDoItem(obj, listObj, updateDisplayToDoObj) {
     );
 
     updateDisplayToDoObj.updateDisp(currentList.value);
+
+    navBarListObj.setCurrentList(currentList.value);
 
     newToDo.reset();
   });
