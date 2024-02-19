@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 export default function newToDoItem(
   obj,
   listObj,
@@ -27,7 +29,7 @@ export default function newToDoItem(
       currentList.value,
       title.value,
       description.value,
-      date.value,
+      format(date.value, "ccc d-LLL-yyyy"),
       priority.checked,
       notes.value
     );
