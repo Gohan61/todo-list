@@ -2,6 +2,8 @@ export default function navLists(listObj, updateDisplayToDo) {
   const navBarLists = document.querySelector(".navLists");
   const listToDo = document.querySelector(".listToDo");
   const currentListOnPage = ["Tasks"];
+  const showCompleted = document.querySelector(".showCompleted");
+  const completedListDiv = document.querySelector(".completedList");
 
   function updateNavLists() {
     while (navBarLists.firstChild) {
@@ -33,7 +35,10 @@ export default function navLists(listObj, updateDisplayToDo) {
       item.addEventListener("click", () => {
         updateDisplayToDo.updateDisp(item.getAttribute("list"));
         currentListOnPage.splice(0, 1, item.getAttribute("list"));
-        console.log(currentListOnPage);
+        if (showCompleted.textContent === "Hide finished to-do's") {
+          showCompleted.textContent = "Show finished to-do's";
+          completedListDiv.style.display = "none";
+        }
       });
     });
   }
