@@ -1,0 +1,108 @@
+body {
+  padding: 0px;
+  margin: 0;
+  font-family: "Courier New", Courier, monospace;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(204, 230, 255);
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.navBar {
+  background-color: rgb(77, 169, 255);
+  padding: 10px;
+}
+
+.mainContainer {
+  padding: 10px;
+}
+
+.newItems {
+  background-color: rgb(0, 119, 230);
+  padding: 10px;
+  box-shadow: 10px 10px 5px 5px lightblue;
+  display: grid;
+  justify-content: center;
+  gap: 10px;
+}
+
+.newToDoForm,
+.newListDiv > button,
+.listToDo button,
+.completedList div button {
+  width: 30%;
+  background-color: rgb(0, 79, 153);
+  border-radius: 10px;
+  border: 1px solid;
+  color: aliceblue;
+  font-size: 1em;
+  padding: 5px;
+}
+
+.newListDiv {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+
+.newToDo {
+  display: grid;
+  width: 100%;
+  padding: 10px;
+  align-items: center;
+  gap: 10px;
+}
+
+.newToDo label {
+  font-weight: bold;
+}
+
+#priority {
+  justify-self: flex-start;
+}
+
+.showCompleted {
+  margin-top: 20px;
+  background-color: rgb(57, 0, 230);
+  border-radius: 10px;
+  padding: 10px;
+  color: aliceblue;
+  font-size: 1em;
+}
+
+.navLists {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.navLists button {
+  background-color: rgb(0, 77, 102);
+  color: aliceblue;
+  padding: 20px;
+  border-radius: 20px;
+  border: 0px;
+}
+
+.navListButton {
+  font-size: 2em;
+}
+
+.deleteList {
+  width: 50%;
+  font-size: 0.5em;
+}
+
+.listToDo div,
+.completeList div {
+  font-size: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.showCompleted {
+  margin-bottom: 10px;
+}
