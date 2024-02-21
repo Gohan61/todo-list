@@ -38,6 +38,3 @@ const newListObj = newList(
   navBarListObj,
   deleteListObj
 );
-
-console.log(completed.getCompletedList());
-console.log(listObj.getLists());
