@@ -9,6 +9,7 @@ import navLists from "./navLists";
 import updateDisplayToDo from "./updateDisplayToDo";
 import deleteLists from "./deleteLists";
 import showComplete from "./showComplete";
+import "./style.css";
 
 const listObj = list();
 const toDoObj = toDo(listObj);
