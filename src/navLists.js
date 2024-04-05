@@ -18,18 +18,26 @@ export default function navLists(listObj, updateDisplayToDo) {
       const deleteList = document.createElement("button");
       deleteList.setAttribute("list", key);
       deleteList.setAttribute("class", "deleteList");
-      deleteList.textContent = "Delete";
+
+      const deleteIcon = document.createElement("i");
+      deleteIcon.setAttribute("class", "material-icons");
+      deleteIcon.textContent = "delete";
+
+      const containerDiv = document.createElement("div");
+      containerDiv.setAttribute("list", key);
 
       if (key === "Tasks") {
         navBarLists.append(button);
       } else {
-        navBarLists.append(button, deleteList);
+        navBarLists.append(containerDiv);
+        containerDiv.append(button, deleteList);
+        deleteList.append(deleteIcon);
       }
     }
   }
 
   function displayListToDo() {
-    let navBarListsChildren = document.querySelectorAll(".navListButton");
+    const navBarListsChildren = document.querySelectorAll(".navListButton");
 
     navBarListsChildren.forEach((item) => {
       item.addEventListener("click", () => {

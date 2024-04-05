@@ -86,12 +86,17 @@ body {
   border: 0px;
 }
 
+.navLists div {
+  display: flex;
+  justify-content: space-between;
+}
+
 .navListButton {
   font-size: 2em;
 }
 
 .deleteList {
-  width: 50%;
+  width: 75px;
   font-size: 0.5em;
 }
 
