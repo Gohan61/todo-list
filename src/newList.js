@@ -1,23 +1,8 @@
-export default function newList(listObj, navLists, displayList, deleteLists) {
-  const newListForm = document.querySelector(".newListDiv");
-  const listSelection = document.querySelector("#list");
+import { listObj } from "./list";
 
-  newListForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const newListInput = document.querySelector("#newList");
-
-    listObj.addLists(newListInput.value);
-
-    const newListItem = document.createElement("option");
-    newListItem.setAttribute("value", newListInput.value);
-    newListItem.textContent = newListInput.value;
-    listSelection.append(newListItem);
-
-    navLists.updateNavLists();
-    displayList.displayListToDo();
-    deleteLists.deleteList();
-
-    newListForm.reset();
-  });
+export default function newList(listObject, newListItem) {
+  if (Object.hasOwn(listObj.getLists(), newListItem)) {
+    return false;
+  }
+  listObject.getLists()[newListItem] = {};
 }
