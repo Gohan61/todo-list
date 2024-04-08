@@ -1,11 +1,10 @@
-export default function deleteItems(listObj) {
-  function deleteToDo(id, list = "Tasks") {
-    delete listObj.getLists()[list][id];
-  }
+import { listObj } from "./list";
+import { completedListObj } from "./completeToDo";
 
-  function deleteList(list) {
-    delete listObj.getLists()[list];
-  }
+export default function deleteItems(list, id) {
+  delete listObj.getLists()[list][id];
 
-  return { deleteToDo, deleteList };
+  if (Object.hasOwn(completedListObj.getCompletedLists()[list], id)) {
+    delete completedListObj.getCompletedLists()[list][id];
+  }
 }
