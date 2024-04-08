@@ -1,25 +1,4 @@
-// export default function completeToDo(listObj) {
-//   const completedList = {};
-
-//   function checkCompleted(id, list = "Tasks") {
-//     if (Object.hasOwn(completedList, list)) {
-//     } else {
-//       completedList[list] = {};
-//     }
-//     completedList[list][id] = listObj.getLists()[list][id];
-//     console.log(completedList);
-
-//     delete listObj.getLists()[list][id];
-//   }
-
-//   const getCompletedList = () => completedList;
-
-//   function undoComplete(id, list = "Tasks") {
-//     listObj.getLists()[list][id] = completedList[list][id];
-//     delete completedList[list][id];
-//   }
-//   return { checkCompleted, getCompletedList, undoComplete };
-// }
+import { listObj } from "./list";
 
 export default function completedList() {
   const completedLists = {
@@ -41,6 +20,17 @@ if (JSON.parse(localStorage.getItem("completedTasks"))) {
   completedListObj = completedList();
 }
 
-// function checkCompleted(id, list) {
-//   if (Object.hasOwn(completedListObj))
-// }
+export function checkCompleted(id, list) {
+  if (!Object.hasOwn(completedListObj.getCompletedLists(), list)) {
+    completedListObj.getCompletedLists()[list] = {};
+  }
+  completedListObj.getCompletedLists()[list][id] = listObj.getLists()[list][id];
+
+  delete listObj.getLists()[list][id];
+}
+
+export function undoComplete(id, list) {
+  listObj.getLists()[list][id] = completedListObj.getCompletedLists()[list][id];
+
+  delete completedListObj.getCompletedLists()[list][id];
+}
