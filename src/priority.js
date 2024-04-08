@@ -1,10 +1,9 @@
-export default function priority(listObj) {
-  function changePriority(id, list = "Tasks") {
-    if (listObj.getLists()[list][id]["priority"] === false) {
-      listObj.getLists()[list][id]["priority"] = true;
-    } else {
-      listObj.getLists()[list][id]["priority"] = false;
-    }
+import { listObj } from "./list";
+
+function changePriority(id, list) {
+  if (listObj.getLists()[list][id].priority === false) {
+    listObj.getLists()[list][id].priority = true;
+  } else {
+    listObj.getLists()[list][id].priority = false;
   }
-  return { changePriority };
 }
