@@ -1,5 +1,5 @@
 import { listObj } from "./list";
-import updateNavLists from "./dom/navLists";
+import updateNavLists, { updateFormList } from "./dom/navLists";
 
 export default function newList(newListItem) {
   if (Object.hasOwn(listObj.getLists(), newListItem)) {
@@ -7,4 +7,5 @@ export default function newList(newListItem) {
   }
   listObj.getLists()[newListItem] = {};
   updateNavLists();
+  updateFormList();
 }

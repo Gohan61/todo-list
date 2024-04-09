@@ -5,6 +5,7 @@ import { wipeDisplay, updateDisplayToDo } from "./updateDisplayToDo";
 const navBarLists = document.querySelector(".navLists");
 const showCompleted = document.querySelector(".showCompleted");
 const completedListDiv = document.querySelector(".completedList");
+const formList = document.querySelector("#list");
 
 export default function updateNavLists() {
   while (navBarLists.firstChild) {
@@ -50,4 +51,18 @@ export function displayListToDo() {
       }
     });
   });
+}
+
+export function updateFormList() {
+  while (formList.firstChild) {
+    formList.removeChild(formList.lastChild);
+  }
+
+  for (const [list] of Object.entries(listObj.getLists())) {
+    const listOption = document.createElement("option");
+    listOption.setAttribute("value", list);
+    listOption.textContent = list;
+
+    formList.append(listOption);
+  }
 }
