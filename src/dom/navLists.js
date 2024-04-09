@@ -1,9 +1,10 @@
 /* eslint-disable no-restricted-syntax */
 import { listObj } from "../list";
 import { wipeDisplay, updateDisplayToDo } from "./updateDisplayToDo";
+import { showCompleted, wipeCompleted } from "./showComplete";
 
 const navBarLists = document.querySelector(".navLists");
-const showCompleted = document.querySelector(".showCompleted");
+const showCompletedButton = document.querySelectorAll(".showCompleted");
 const completedListDiv = document.querySelector(".completedList");
 const formList = document.querySelector("#list");
 
@@ -13,9 +14,13 @@ export default function updateNavLists() {
   }
   for (const [key, value] of Object.entries(listObj.getLists())) {
     const button = document.createElement("button");
+    const finishedToDoButton = document.createElement("button");
     button.setAttribute("list", key);
     button.setAttribute("class", "navListButton");
     button.textContent = key;
+    finishedToDoButton.setAttribute("list", key);
+    finishedToDoButton.setAttribute("class", "showCompleted");
+    finishedToDoButton.textContent = "Show/Hide finished to-do's";
 
     const deleteList = document.createElement("button");
     deleteList.setAttribute("list", key);
@@ -29,10 +34,12 @@ export default function updateNavLists() {
     containerDiv.setAttribute("list", key);
 
     if (key === "Tasks") {
-      navBarLists.append(button);
+      navBarLists.append(containerDiv);
+      finishedToDoButton.setAttribute("list", "Tasks");
+      containerDiv.append(button, finishedToDoButton);
     } else {
       navBarLists.append(containerDiv);
-      containerDiv.append(button, deleteList);
+      containerDiv.append(button, deleteList, finishedToDoButton);
       deleteList.append(deleteIcon);
     }
   }
@@ -40,15 +47,12 @@ export default function updateNavLists() {
 
 export function displayListToDo() {
   const navBarListsChildren = document.querySelectorAll(".navListButton");
-
+  wipeDisplay();
   navBarListsChildren.forEach((item) => {
     item.addEventListener("click", () => {
       wipeDisplay();
+      wipeCompleted();
       updateDisplayToDo(item.getAttribute("list"));
-      if (showCompleted.textContent === "Hide finished to-do's") {
-        showCompleted.textContent = "Show finished to-do's";
-        completedListDiv.style.display = "none";
-      }
     });
   });
 }
