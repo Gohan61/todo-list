@@ -1,5 +1,8 @@
 /* eslint-disable no-restricted-syntax */
 import { listObj } from "../list";
+import deleteItems from "../delete";
+import { checkCompleted } from "../completeToDo";
+import changePriority from "../priority";
 
 const listToDo = document.querySelector(".listToDo");
 
@@ -13,7 +16,7 @@ export function updateDisplayToDo(list) {
     const deleteButton = document.createElement("button");
     const description = document.createElement("div");
     const notes = document.createElement("div");
-    const changePriority = document.createElement("button");
+    const changePriorityButton = document.createElement("button");
 
     title.textContent = [value.title];
     date.textContent = [value.dueDate];
@@ -27,48 +30,47 @@ export function updateDisplayToDo(list) {
     }
     notes.textContent = [value.notes];
     notes.style.display = "none";
-    changePriority.textContent = "Priority";
-    changePriority.style.display = "none";
+    changePriorityButton.textContent = "Priority";
+    changePriorityButton.style.display = "none";
 
     expand.addEventListener("click", () => {
       expand.textContent = "Collapse";
       if (description.style.display === "none") {
         description.style.display = "";
         notes.style.display = "";
-        changePriority.style.display = "";
+        changePriorityButton.style.display = "";
       } else {
         description.style.display = "none";
         notes.style.display = "none";
-        changePriority.style.display = "none";
+        changePriorityButton.style.display = "none";
         expand.textContent = "Expand";
       }
     });
 
     deleteButton.addEventListener("click", () => {
-      deleteObj.deleteToDo(key);
+      deleteItems(list, key);
       toDoDiv.remove();
     });
 
     checkToDo.addEventListener("click", () => {
-      completed.checkCompleted(key, list);
+      checkCompleted(key, list);
       toDoDiv.remove();
     });
 
-    changePriority.addEventListener("click", () => {
-      if (Object.values([value.priority]).includes(false)) {
+    changePriorityButton.addEventListener("click", () => {
+      if (toDoDiv.style.backgroundColor === "") {
         toDoDiv.style.backgroundColor = "red";
-        [(value.priority = true)];
       } else {
         toDoDiv.style.backgroundColor = "";
-        [(value.priority = false)];
       }
+      changePriority(key, list);
     });
 
     listToDo.append(toDoDiv);
     toDoDiv.append(checkToDo, title, date, expand, deleteButton);
     toDoDiv.insertBefore(description, expand);
     toDoDiv.insertBefore(notes, expand);
-    toDoDiv.insertBefore(changePriority, expand);
+    toDoDiv.insertBefore(changePriorityButton, expand);
   }
 }
 
