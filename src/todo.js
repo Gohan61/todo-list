@@ -1,28 +1,33 @@
 import { listObj } from "./list";
 
-function newToDo(
-  list,
-  title = undefined,
-  description = undefined,
-  dueDate = undefined,
-  priority = undefined,
-  notes = undefined,
-  id = Date.now(),
-) {
-  listObj.getLists()[list][id] = {
-    title,
-    description,
-    dueDate,
-    priority,
-    notes,
+export function newToDo() {
+  let currentId;
+  const setNewToDo = (
+    list,
+    title = undefined,
+    description = undefined,
+    dueDate = undefined,
+    priority = undefined,
+    notes = undefined,
+    id = Date.now(),
+  ) => {
+    listObj.getLists()[list][id] = {
+      title,
+      description,
+      dueDate,
+      priority,
+      notes,
+    };
+    currentId = id;
   };
-  return { id };
+
+  const getId = () => currentId;
+
+  return { getId, setNewToDo };
 }
 
 function editToDo(list, id, field, change) {
   listObj.getLists()[list][id][field] = change;
 }
 
-let newToDoObj;
-
-// newToDoObj = newToDo("Tasks", "Second try", "Desc2", "20202", "yes", "okay");
+export const newToDoObj = newToDo();
