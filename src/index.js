@@ -8,10 +8,11 @@ import newList from "./newList";
 import navLists, { displayListToDo } from "./dom/navLists";
 import updateDisplayToDo from "./dom/updateDisplayToDo";
 import deleteLists from "./deleteLists";
-import showComplete from "./dom/showComplete";
+import { showCompleted } from "./dom/showComplete";
 import "./style.css";
 import deleteList from "./deleteLists";
 
 navLists();
 newToDoItem();
 displayListToDo();
+showCompleted();
