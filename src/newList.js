@@ -1,8 +1,10 @@
 import { listObj } from "./list";
+import updateNavLists from "./dom/navLists";
 
-export default function newList(listObject, newListItem) {
+export default function newList(newListItem) {
   if (Object.hasOwn(listObj.getLists(), newListItem)) {
     return false;
   }
-  listObject.getLists()[newListItem] = {};
+  listObj.getLists()[newListItem] = {};
+  updateNavLists();
 }
