@@ -3,9 +3,9 @@ import toDo, { newToDoObj } from "./todo";
 import completeToDo from "./completeToDo";
 import priority from "./priority";
 import deleteItems from "./delete";
-import newToDo from "./dom/newToDo";
+import newToDoItem from "./dom/newToDo";
 import newList from "./newList";
-import navLists from "./dom/navLists";
+import navLists, { displayListToDo } from "./dom/navLists";
 import updateDisplayToDo from "./dom/updateDisplayToDo";
 import deleteLists from "./deleteLists";
 import showComplete from "./dom/showComplete";
@@ -13,3 +13,5 @@ import "./style.css";
 import deleteList from "./deleteLists";
 
 navLists();
+newToDoItem();
+displayListToDo();

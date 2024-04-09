@@ -1,9 +1,8 @@
 /* eslint-disable no-restricted-syntax */
 import { listObj } from "../list";
+import { wipeDisplay, updateDisplayToDo } from "./updateDisplayToDo";
 
 const navBarLists = document.querySelector(".navLists");
-const listToDo = document.querySelector(".listToDo");
-const currentListOnPage = ["Tasks"];
 const showCompleted = document.querySelector(".showCompleted");
 const completedListDiv = document.querySelector(".completedList");
 
@@ -38,13 +37,13 @@ export default function updateNavLists() {
   }
 }
 
-function displayListToDo() {
+export function displayListToDo() {
   const navBarListsChildren = document.querySelectorAll(".navListButton");
 
   navBarListsChildren.forEach((item) => {
     item.addEventListener("click", () => {
-      updateDisplayToDo.updateDisp(item.getAttribute("list"));
-      currentListOnPage.splice(0, 1, item.getAttribute("list"));
+      wipeDisplay();
+      updateDisplayToDo(item.getAttribute("list"));
       if (showCompleted.textContent === "Hide finished to-do's") {
         showCompleted.textContent = "Show finished to-do's";
         completedListDiv.style.display = "none";
@@ -52,5 +51,3 @@ function displayListToDo() {
     });
   });
 }
-const getCurrentList = () => currentListOnPage[0];
-const setCurrentList = (setList) => currentListOnPage.splice(0, 1, setList);
