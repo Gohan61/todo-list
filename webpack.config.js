@@ -3,7 +3,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: ["./src/index.js", "./src/dom/newListForm.js"],
+  entry: [
+    "./src/index.js",
+    "./src/dom/newListForm.js",
+    "./src/dom/navLists.js",
+  ],
   devtool: "inline-source-map",
   devServer: {
     static: "./src",
