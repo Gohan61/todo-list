@@ -7,6 +7,7 @@ module.exports = {
     "./src/index.js",
     "./src/dom/newListForm.js",
     "./src/dom/navLists.js",
+    "./src/dom/updateDisplayToDo.js",
   ],
   devtool: "inline-source-map",
   devServer: {
