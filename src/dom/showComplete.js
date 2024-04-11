@@ -1,5 +1,8 @@
 /* eslint-disable no-restricted-syntax */
 import { completedListObj } from "../completeToDo";
+import { undoComplete } from "../completeToDo";
+import { listObj } from "../list";
+import storeLocal, { storeLocalCompleted } from "../localStorage";
 
 const completedListDiv = document.querySelector(".completedList");
 
@@ -9,7 +12,7 @@ export function loadCompleted(list) {
   completedListDiv.textContent = "Completed To-Do's";
 
   for (const [key, value] of Object.entries(
-    completedListObj.getCompletedLists()[list],
+    completedListObj.getCompletedLists()[list]
   )) {
     const toDoDiv = document.createElement("div");
     const uncheckToDo = document.createElement("button");
@@ -20,10 +23,12 @@ export function loadCompleted(list) {
     date.textContent = [value.dueDate];
     uncheckToDo.textContent = "Undo";
 
-    // uncheckToDo.addEventListener("click", () => {
-    //   completedListObj.undoComplete(key, list.getCurrentList());
-    //   toDoDiv.remove();
-    // });
+    uncheckToDo.addEventListener("click", () => {
+      undoComplete(key, list);
+      toDoDiv.remove();
+      storeLocal(listObj.getLists());
+      storeLocalCompleted(completedListObj.getCompletedLists());
+    });
 
     completedListDiv.append(toDoDiv);
     toDoDiv.append(title, date, uncheckToDo);
@@ -41,7 +46,7 @@ export function showCompleted() {
       } else if (completedListDiv.style.display === "") {
         completedListDiv.style.display = "none";
       }
-    }),
+    })
   );
 }
 
