@@ -13,6 +13,15 @@ body {
   padding: 10px;
 }
 
+.navBar h1 {
+  font-size: 2.1em;
+}
+
+.navBar h2 {
+  text-align: center;
+  text-decoration: underline;
+}
+
 .mainContainer {
   padding: 10px;
 }
