@@ -3,6 +3,7 @@ import updateNavLists, {
   updateFormList,
   displayListToDo,
 } from "./dom/navLists";
+import deleteListDOM from "./dom/deleteListButton";
 import { showCompleted, wipeCompleted } from "./dom/showComplete";
 
 export default function newList(newListItem) {
@@ -15,4 +16,5 @@ export default function newList(newListItem) {
   updateFormList();
   showCompleted();
   wipeCompleted();
+  deleteListDOM();
 }
