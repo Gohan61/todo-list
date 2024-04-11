@@ -11,8 +11,10 @@ import deleteLists from "./deleteLists";
 import { showCompleted } from "./dom/showComplete";
 import "./style.css";
 import deleteList from "./deleteLists";
+import deleteListDOM from "./dom/deleteListButton";
 
 navLists();
 newToDoItem();
 displayListToDo();
 showCompleted();
+deleteListDOM();
