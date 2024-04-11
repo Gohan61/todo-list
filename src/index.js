@@ -1,5 +1,9 @@
 import newToDoItem from "./dom/newToDo";
-import navLists, { displayListToDo, showInfo } from "./dom/navLists";
+import navLists, {
+  displayListToDo,
+  showInfo,
+  updateFormList,
+} from "./dom/navLists";
 import { showCompleted } from "./dom/showComplete";
 import "./style.css";
 import deleteListDOM from "./dom/deleteListButton";
@@ -10,3 +14,4 @@ displayListToDo();
 showCompleted();
 deleteListDOM();
 showInfo();
+updateFormList();
