@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-syntax */
 import { listObj } from "../list";
 import { wipeDisplay, updateDisplayToDo } from "./updateDisplayToDo";
-import { showCompleted, wipeCompleted } from "./showComplete";
+import { wipeCompleted } from "./showComplete";
 
 const navBarLists = document.querySelector(".navLists");
 const showCompletedButton = document.querySelectorAll(".showCompleted");
