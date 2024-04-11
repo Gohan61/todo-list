@@ -1,5 +1,5 @@
 function list() {
-  const lists = {
+  let lists = {
     Tasks: {},
   };
 
@@ -11,6 +11,7 @@ function list() {
 
 export let listObj;
 if (JSON.parse(localStorage.getItem("uncompletedTasks"))) {
+  listObj = list();
   listObj.setLists(JSON.parse(localStorage.getItem("uncompletedTasks")));
 } else {
   listObj = list();

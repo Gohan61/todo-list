@@ -2,6 +2,7 @@ import { format } from "date-fns";
 import { newToDoObj } from "../todo";
 import { listObj } from "../list";
 import { updateDisplayToDo, wipeDisplay } from "./updateDisplayToDo";
+import storeLocal from "../localStorage";
 
 export default function newToDoItem() {
   const newToDo = document.querySelector(".newToDo");
@@ -29,16 +30,12 @@ export default function newToDoItem() {
       description.value,
       format(date.value, "ccc d-LLL-yyyy"),
       priority.checked,
-      notes.value,
+      notes.value
     );
 
     wipeDisplay();
     updateDisplayToDo(currentList.value);
-
-    // navBarListObj.setCurrentList(currentList.value);
-
-    console.log(listObj.getLists());
-    console.log(newToDoObj.getId());
+    storeLocal(listObj.getLists());
 
     newToDo.reset();
     newToDo.style.display = "none";

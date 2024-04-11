@@ -1,20 +1,22 @@
 import { listObj } from "./list";
 
 export default function completedList() {
-  const completedLists = {
+  let completedLists = {
     Tasks: {},
   };
 
   const getCompletedLists = () => completedLists;
-  const setCompletedLists = (localList) => (completedList = localList);
+  const setCompletedLists = (localList) => (completedLists = localList);
 
   return { getCompletedLists, setCompletedLists };
 }
 
 export let completedListObj;
+
 if (JSON.parse(localStorage.getItem("completedTasks"))) {
+  completedListObj = completedList();
   completedListObj.setCompletedLists(
-    JSON.parse(localStorage.getItem("completedTasks")),
+    JSON.parse(localStorage.getItem("completedTasks"))
   );
 } else {
   completedListObj = completedList();

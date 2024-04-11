@@ -1,8 +1,9 @@
 /* eslint-disable no-restricted-syntax */
 import { listObj } from "../list";
 import deleteItems from "../delete";
-import { checkCompleted } from "../completeToDo";
+import { checkCompleted, completedListObj } from "../completeToDo";
 import changePriority from "../priority";
+import storeLocal, { storeLocalCompleted } from "../localStorage";
 
 const listToDo = document.querySelector(".listToDo");
 
@@ -50,11 +51,14 @@ export function updateDisplayToDo(list) {
     deleteButton.addEventListener("click", () => {
       deleteItems(list, key);
       toDoDiv.remove();
+      storeLocal(listObj.getLists());
     });
 
     checkToDo.addEventListener("click", () => {
       checkCompleted(key, list);
       toDoDiv.remove();
+      storeLocalCompleted(completedListObj.getCompletedLists());
+      storeLocal(listObj.getLists());
     });
 
     changePriorityButton.addEventListener("click", () => {

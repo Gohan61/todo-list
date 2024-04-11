@@ -9,7 +9,7 @@ export function newToDo() {
     dueDate = undefined,
     priority = undefined,
     notes = undefined,
-    id = Date.now(),
+    id = Date.now()
   ) => {
     listObj.getLists()[list][id] = {
       title,
