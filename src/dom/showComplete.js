@@ -9,7 +9,8 @@ const completedListDiv = document.querySelector(".completedList");
 export function loadCompleted(list) {
   wipeCompleted();
 
-  completedListDiv.textContent = "Completed To-Do's";
+  const completedText = document.createElement("span");
+  completedText.textContent = "Completed to-do's";
 
   for (const [key, value] of Object.entries(
     completedListObj.getCompletedLists()[list]
@@ -30,7 +31,7 @@ export function loadCompleted(list) {
       storeLocalCompleted(completedListObj.getCompletedLists());
     });
 
-    completedListDiv.append(toDoDiv);
+    completedListDiv.append(completedText, toDoDiv);
     toDoDiv.append(title, date, uncheckToDo);
   }
 }

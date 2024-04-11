@@ -118,10 +118,38 @@ body {
   margin: 0;
 }
 
-.listToDo div,
-.completeList div {
-  font-size: 1em;
-  display: flex;
-  flex-direction: column;
+.listToDo,
+.completedList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
+  margin: 10px;
+}
+
+.listToDo div {
+  font-size: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.4fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.completedList div {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.4fr;
+  font-size: 1em;
+}
+
+.listToDo > div,
+.completedList > div {
+  border: 2px dotted rgb(0, 44, 131, 0.3);
+}
+
+.listToDo div button,
+.completedList div button {
+  width: 87px;
+  height: 39px;
+}
+
+.completedList > span {
+  grid-area: 1 / 1 / 1 / 4;
 }
