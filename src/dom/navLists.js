@@ -15,12 +15,15 @@ export default function updateNavLists() {
   for (const [key, value] of Object.entries(listObj.getLists())) {
     const button = document.createElement("button");
     const finishedToDoButton = document.createElement("button");
+    const finishedToDoIcon = document.createElement("i");
+    finishedToDoIcon.setAttribute("class", "material-icons");
+    finishedToDoIcon.textContent = "check_box";
+
     button.setAttribute("list", key);
     button.setAttribute("class", "navListButton");
     button.textContent = key;
     finishedToDoButton.setAttribute("list", key);
     finishedToDoButton.setAttribute("class", "showCompleted");
-    finishedToDoButton.textContent = "Show/Hide finished to-do's";
 
     const deleteList = document.createElement("button");
     deleteList.setAttribute("list", key);
@@ -37,9 +40,11 @@ export default function updateNavLists() {
       navBarLists.append(containerDiv);
       finishedToDoButton.setAttribute("list", "Tasks");
       containerDiv.append(button, finishedToDoButton);
+      finishedToDoButton.append(finishedToDoIcon);
     } else {
       navBarLists.append(containerDiv);
       containerDiv.append(button, deleteList, finishedToDoButton);
+      finishedToDoButton.append(finishedToDoIcon);
       deleteList.append(deleteIcon);
     }
   }
