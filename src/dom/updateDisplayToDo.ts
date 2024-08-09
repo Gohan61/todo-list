@@ -5,10 +5,20 @@ import { checkCompleted, completedListObj } from "../completeToDo";
 import changePriority from "../priority";
 import storeLocal, { storeLocalCompleted } from "../localStorage";
 
-const listToDo = document.querySelector(".listToDo");
+const listToDo: HTMLDivElement | null = document.querySelector(".listToDo");
 
-export function updateDisplayToDo(list) {
-  for (const [key, value] of Object.entries(listObj.getLists()[list])) {
+export type ListValues = {
+  title: string;
+  dueDate: string;
+  description: string;
+  priority: boolean;
+  notes: string;
+};
+
+export function updateDisplayToDo(list: string) {
+  for (const [key, value] of Object.entries(
+    listObj.getLists()[list] as Record<string, ListValues>
+  )) {
     const toDoDiv = document.createElement("div");
     const checkToDo = document.createElement("button");
     const title = document.createElement("div");
@@ -19,17 +29,17 @@ export function updateDisplayToDo(list) {
     const notes = document.createElement("div");
     const changePriorityButton = document.createElement("button");
 
-    title.textContent = [value.title];
-    date.textContent = [value.dueDate];
+    title.textContent = value.title;
+    date.textContent = value.dueDate;
     checkToDo.textContent = "Finished";
     expand.textContent = "Expand";
     deleteButton.textContent = "Delete";
-    description.textContent = [value.description];
+    description.textContent = value.description;
     description.style.display = "none";
     if (Object.values([value.priority]).includes(true)) {
       toDoDiv.style.backgroundColor = "red";
     }
-    notes.textContent = [value.notes];
+    notes.textContent = value.notes;
     notes.style.display = "none";
     changePriorityButton.textContent = "Priority";
     changePriorityButton.style.display = "none";
@@ -70,7 +80,9 @@ export function updateDisplayToDo(list) {
       changePriority(key, list);
     });
 
-    listToDo.append(toDoDiv);
+    if (listToDo) {
+      listToDo.append(toDoDiv);
+    }
     toDoDiv.append(checkToDo, title, date, expand, deleteButton);
     toDoDiv.insertBefore(description, expand);
     toDoDiv.insertBefore(notes, expand);
@@ -78,8 +90,8 @@ export function updateDisplayToDo(list) {
   }
 }
 
-export function wipeDisplay() {
-  while (listToDo.firstChild) {
-    listToDo.removeChild(listToDo.lastChild);
+export function wipeDisplay(): void {
+  while (listToDo && listToDo.firstChild) {
+    listToDo.removeChild(listToDo.lastChild!);
   }
 }

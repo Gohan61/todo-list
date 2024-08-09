@@ -3,25 +3,27 @@ import { completedListObj } from "../completeToDo";
 import { undoComplete } from "../completeToDo";
 import { listObj } from "../list";
 import storeLocal, { storeLocalCompleted } from "../localStorage";
+import { ListValues } from "./updateDisplayToDo";
 
-const completedListDiv = document.querySelector(".completedList");
+const completedListDiv: HTMLDivElement | null =
+  document.querySelector(".completedList");
 
-export function loadCompleted(list) {
+export function loadCompleted(list: string) {
   wipeCompleted();
 
   const completedText = document.createElement("span");
   completedText.textContent = "Completed to-do's";
 
   for (const [key, value] of Object.entries(
-    completedListObj.getCompletedLists()[list]
+    completedListObj.getCompletedLists()[list] as Record<string, ListValues>
   )) {
     const toDoDiv = document.createElement("div");
     const uncheckToDo = document.createElement("button");
     const title = document.createElement("div");
     const date = document.createElement("div");
 
-    title.textContent = [value.title];
-    date.textContent = [value.dueDate];
+    title.textContent = value.title;
+    date.textContent = value.dueDate;
     uncheckToDo.textContent = "Undo";
 
     uncheckToDo.addEventListener("click", () => {
@@ -31,7 +33,9 @@ export function loadCompleted(list) {
       storeLocalCompleted(completedListObj.getCompletedLists());
     });
 
-    completedListDiv.append(completedText, toDoDiv);
+    if (completedListDiv) {
+      completedListDiv.append(completedText, toDoDiv);
+    }
     toDoDiv.append(title, date, uncheckToDo);
   }
 }
@@ -41,18 +45,21 @@ export function showCompleted() {
 
   showCompletedButton.forEach((button) =>
     button.addEventListener("click", () => {
-      loadCompleted(button.getAttribute("list"));
-      if (completedListDiv.style.display === "none") {
-        completedListDiv.style.display = "";
-      } else if (completedListDiv.style.display === "") {
-        completedListDiv.style.display = "none";
+      const buttonAttribute = button.getAttribute("list");
+      if (completedListDiv && buttonAttribute) {
+        loadCompleted(buttonAttribute);
+        if (completedListDiv.style.display === "none") {
+          completedListDiv.style.display = "";
+        } else if (completedListDiv.style.display === "") {
+          completedListDiv.style.display = "none";
+        }
       }
     })
   );
 }
 
 export function wipeCompleted() {
-  while (completedListDiv.firstChild) {
-    completedListDiv.removeChild(completedListDiv.lastChild);
+  while (completedListDiv && completedListDiv.firstChild) {
+    completedListDiv.removeChild(completedListDiv.lastChild!);
   }
 }

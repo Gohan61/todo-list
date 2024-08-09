@@ -7,7 +7,7 @@ import updateNavLists, {
 import deleteListDOM from "./dom/deleteListButton";
 import { showCompleted, wipeCompleted } from "./dom/showComplete";
 
-export default function newList(newListItem) {
+export default function newList(newListItem: string): boolean | void {
   if (Object.hasOwn(listObj.getLists(), newListItem)) {
     return false;
   }
@@ -18,5 +18,5 @@ export default function newList(newListItem) {
   showCompleted();
   wipeCompleted();
   deleteListDOM();
-  showInfo()
+  showInfo();
 }
